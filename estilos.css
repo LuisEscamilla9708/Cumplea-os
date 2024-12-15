@@ -1,0 +1,143 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Incluye padding y bordes dentro del ancho/alto */
+    font-family: Arial, sans-serif; /* Fuente base para todo el texto */
+}
+
+/* ==========================
+   Video de fondo
+   ========================== */
+#videoFondo {
+    position: fixed; /* Mantiene el video fijo detrás del contenido */
+    top: 0; /* Posición inicial desde arriba */
+    left: 0; /* Posición inicial desde la izquierda */
+    width: 100%; /* El video ocupa todo el ancho de la pantalla */
+    height: 100%; /* El video ocupa todo el alto de la pantalla */
+    object-fit: cover; /* Asegura que el video cubra toda el área sin distorsión */
+    z-index: -1; /* Envía el video detrás de todo el contenido */
+}
+
+/* ==========================
+   Texto animado centrado
+   ========================== */
+.texto-animado {
+    font-size: 36px; /* Tamaño grande del texto */
+    font-weight: bold; /* Texto en negritas */
+    color: white; /* Color del texto */
+    text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.7); /* Sombra roja para resaltar el texto */
+    text-align: center; /* Centra el texto horizontalmente */
+    position: absolute; /* Posicionamiento absoluto con respecto al viewport */
+    top: 1%; /* Coloca el texto al 10% desde la parte superior */
+    left: 50%; /* Posiciona el texto a la mitad del ancho de la pantalla */
+    transform: translateX(-50%); /* Ajusta para centrar exactamente */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    border-right: 2px solid white; /* Línea simulando un cursor */
+}
+
+/* Animación de escritura */
+@keyframes escribir {
+    0% { width: 0; } /* Comienza sin mostrar texto */
+    100% { width: 20ch; } /* Escribe 20 caracteres progresivamente */
+}
+
+/* ==========================
+   Contenedor principal
+   ========================== */
+.container {
+    display: flex; /* Utiliza flexbox para alinear elementos */
+    justify-content: space-between; /* Distribuye los elementos uniformemente */
+    align-items: center; /* Centra los elementos verticalmente */
+    gap: 10px; /* Espacio entre los elementos */
+    margin: 15% auto; /* Margen superior y centrar horizontalmente */
+    width: 90%; /* El contenedor ocupa el 90% del ancho de la pantalla */
+    max-width: 1200px; /* Limita el tamaño máximo a 1200px */
+    position: relative; /* Posición relativa a su contenedor padre */
+}
+
+/* Contenedor específico para imágenes con botones */
+.imagen-container {
+    display: flex; /* Utiliza flexbox */
+    flex-direction: column; /* Alinea los elementos en columna (imagen + botón) */
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+
+/* ==========================
+   Estilo de la imagen principal
+   ========================== */
+.imagen-principal {
+    width: 300px; /* Tamaño fijo de la imagen principal */
+    max-width: 80%; /* Limita el tamaño máximo al 80% del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Sombra para dar efecto 3D */
+}
+
+/* ==========================
+   Estilo de las imágenes laterales
+   ========================== */
+.imagen-lateral {
+    width: 500px; /* Tamaño fijo para las imágenes laterales */
+    max-width: 80%; /* Limita el tamaño al 80% del contenedor */
+    height: auto; /* Mantiene la proporción */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra suave */
+}
+
+/* ==========================
+   Botones estilizados
+   ========================== */
+.boton {
+    margin-top: 10px; /* Espacio entre la imagen y el botón */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    font-size: 16px; /* Tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+    color: white; /* Color del texto */
+    background: linear-gradient(to right, #ff69b4, #87ceeb); /* Gradiente rosa-azul */
+    border: none; /* Elimina borde del botón */
+    border-radius: 20px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor en forma de mano al pasar el mouse */
+    transition: transform 0.3s ease, background 0.3s ease; /* Transiciones suaves */
+}
+
+.boton:hover {
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el mouse */
+    background: linear-gradient(to left, #87ceeb, #ff69b4); /* Invierte el gradiente */
+}
+
+/* ==========================
+   Estilo del reproductor de música
+   ========================== */
+.musica {
+    position: relative; /* Posición relativa para el reproductor */
+    z-index: 2; /* Asegura que el reproductor esté sobre el video */
+    text-align: center; /* Centra el reproductor horizontalmente */
+    margin-top: 50px; /* Espacio superior entre el contenido y el reproductor */
+}
+
+/* ==========================
+   Diseño responsivo
+   ========================== */
+/* Ajustes para pantallas con ancho menor a 768px */
+@media (max-width: 768px) {
+    .texto-animado {
+        font-size: 24px; /* Reducir tamaño del texto */
+    }
+
+    .imagen-principal {
+        width: 60%; /* Ajustar tamaño de la imagen principal */
+    }
+
+    .imagen-lateral {
+        width: 300%; /* Ajustar tamaño de las imágenes laterales */
+    }
+
+    .container {
+        gap: 5px; /* Reducir el espacio entre los elementos */
+    }
+
+    .musica {
+        margin-top: 70px; /* Ajustar margen superior del reproductor */
+    }
+}
